@@ -1,6 +1,18 @@
-from callduration import getdurationavg
-from callcount import callcountavg
+from callduration import getcallduration
+from callcount import getcallcount
 
-durationlist = getdurationavg()
-callcountlist = callcountavg()
 
+durationlist = getcallduration()
+callcountlist = getcallcount()
+
+
+maxprobability = 0
+minprobability = 1
+
+for duration in durationlist:
+    for count in callcountlist:
+        probability = duration * count
+        if probability > maxprobability:
+            maxprobability = probability
+
+print maxprobability

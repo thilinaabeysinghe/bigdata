@@ -3,17 +3,16 @@ import csv
 import string
 calltime = []
 callduration = []
+returnduration = []
 
 
-def readfile():
+def getcallduration():
     with open('cdr.csv', 'r') as csvfile:
         plots = csv.reader(csvfile, delimiter='|')
         for unitcall in plots:
             calltime.append(str(unitcall[14]))
             callduration.append(str(unitcall[17]))
 
-
-def printcallduration():
     period1totalcall = 0
     period2totalcall = 0
     period3totalcall = 0
@@ -56,7 +55,7 @@ def printcallduration():
         else:
             period5totalcall += total_time
 
-    totaltime = period1totalcall + period2totalcall + period3totalcall + period4totalcall + period5totalcall + period6totalcall
+    totaltime = period1totalcall + period2totalcall + period3totalcall + period4totalcall + period5totalcall
 
 
 
@@ -66,7 +65,7 @@ def printcallduration():
     print "Period 4 " + str(period4totalcall)+ "percentage : "+str(float(period4totalcall) / float(totaltime))
     print "Period 5 " + str(period5totalcall)+ "percentage : "+str(float(period5totalcall) / float(totaltime))
 
-def getdurationavg():
+
     durationavg = []
     durationavg.append(float(period1totalcall) / float(totaltime))
     durationavg.append(float(period2totalcall) / float(totaltime))
@@ -74,8 +73,7 @@ def getdurationavg():
     durationavg.append(float(period4totalcall) / float(totaltime))
     durationavg.append(float(period5totalcall) / float(totaltime))
 
-    return durationavg
+    return  durationavg
 
 
-readfile()
-printcallduration()
+

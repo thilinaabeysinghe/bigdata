@@ -2,17 +2,16 @@
 import csv
 import string
 calltime = []
+returncount = []
 
 
-
-def readfile():
+def getcallcount():
     with open('cdr.csv', 'r') as csvfile:
         plots = csv.reader(csvfile, delimiter='|')
         for unitcall in plots:
             calltime.append(str(unitcall[14]))
 
 
-def printcalltime():
     period1 = 0
     period2 = 0
     period3 = 0
@@ -58,18 +57,17 @@ def printcalltime():
     print "Period 5 " + str(period5)+ "percentage : "+str(float(period5 / float(total)))
     print "Period 6 " + str(period6)+ "percentage : "+str(float(period6 / float(total)))
 
-def callcountavg():
+
     callcountavgl = []
-    callcountavgl.append(float(period1) / float(period1 / float(total)))
-    callcountavgl.append(float(period2) / float(period2 / float(total)))
-    callcountavgl.append(float(period3) / float(period3 / float(total)))
-    callcountavgl.append(float(period4) / float(period4 / float(total)))
-    callcountavgl.append(float(period5) / float(period5 / float(total)))
-    callcountavgl.append(float(period6) / float(period6 / float(total)))
+    callcountavgl.append(float(period1) / float(float(period1) / float(total)))
+    callcountavgl.append(float(period2) / float(float(period2) / float(total)))
+    callcountavgl.append(float(period3) / float(float(period3) / float(total)))
+    callcountavgl.append(float(period4) / float(float(period4) / float(total)))
+    callcountavgl.append(float(period5) / float(float(period5) / float(total)))
+    callcountavgl.append(float(period6) / float(float(period6) / float(total)))
 
     return callcountavgl
 
 
 
-readfile()
-printcalltime()
+
